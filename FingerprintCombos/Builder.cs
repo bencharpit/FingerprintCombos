@@ -1,9 +1,9 @@
-﻿using FingerprintCombos.Options;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
+using FingerprintCombos.Options;
 using static FingerprintCombos.Program;
 
 namespace FingerprintCombos
@@ -36,9 +36,12 @@ namespace FingerprintCombos
 
         public OptionBase Build()
         {
-            return _option == Option.ADD
-                ? new Fingerprint()
-                : new Searcher(_directories);
+            return _option switch
+            {
+                Option.ADD => new Fingerprint(),
+                Option.SEARCHER => new Searcher(_directories),
+                _ => throw new Exception()
+            };
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿namespace FingerprintCombos.Options
+﻿using System.Threading.Tasks;
+
+namespace FingerprintCombos.Options
 {
     internal abstract class OptionBase
     {
-        public abstract void Start();
+        public abstract Task Start();
     }
 }
