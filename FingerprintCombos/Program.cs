@@ -21,9 +21,6 @@ namespace FingerprintCombos
         {
             Console.Title = "FingerprintCombos @ https://cracked.to/char";
 
-            Console.WriteLine("1. Adding fingerprints to your combo");
-            Console.WriteLine("2. Check your fingerprints on combos uploaded to /check-combos");
-
             var OptionChoosed = ConsoleHelper.GetIndexedOption(new Dictionary<string, Option?>
             {
                 ["Adding fingerprints to your combo"] = Option.ADD,
