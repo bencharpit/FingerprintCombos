@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace FingerprintCombos.Helpers
 {
     internal class ConsoleHelper
     {
-
         /// <summary>
-        /// 
+        /// Display dictionary keys in the console and return value
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="options"></param>
-        /// <returns></returns>
+        /// <typeparam name="T">Enum options</typeparam>
+        /// <param name="options">Dictionary with keys & values</param>
+        /// <returns>Enum option</returns>
         internal static T GetIndexedOption<T>(Dictionary<string, T> options)
         {
             while (true)
@@ -27,6 +27,8 @@ namespace FingerprintCombos.Helpers
                 if (!int.TryParse(Console.ReadLine(), out var OptionIndex))
                     continue;
 
+                Console.WriteLine();
+
                 int Index = OptionIndex - 1;
 
                 var Element = options.Values.ElementAtOrDefault(Index);
@@ -37,6 +39,28 @@ namespace FingerprintCombos.Helpers
 
                 return Element;
             }
+        }
+
+        /// <summary>
+        /// Read a file dragged to the console
+        /// </summary>
+        /// <returns>File full path</returns>
+        internal static string GetTextFileName()
+        {
+            Console.WriteLine(
+                "Drag the text file (combo) that will be protected with your fingerprints");
+
+            Console.Write(">> ");
+
+            string Combo = Console.ReadLine()
+                .Replace("\"", string.Empty);
+
+            if (!File.Exists(Combo))
+            {
+                throw new FileNotFoundException(Combo);
+            }
+
+            return Combo;
         }
     }
 }

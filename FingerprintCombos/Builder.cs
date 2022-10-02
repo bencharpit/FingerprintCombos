@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-
+using FingerprintCombos.Helpers;
 using FingerprintCombos.Options;
 using static FingerprintCombos.Program;
 
@@ -14,6 +13,11 @@ namespace FingerprintCombos
 
         private IEnumerable<string> _directories;
 
+        /// <summary>
+        /// Directories with fingerprint
+        /// </summary>
+        private IEnumerable<string> _fingerPrints;
+
         public Builder(Option option)
         {
             _option = option;
@@ -24,12 +28,17 @@ namespace FingerprintCombos
             if (!Directory.Exists(FolderName))
                 throw new DirectoryNotFoundException(FolderName);
 
-            IEnumerable<string> Directories = Directory.GetFiles(FolderName, "*.txt");
+            _directories = FilesHelper.GetAllFilesOnDirectory(FolderName, "*.txt");
 
-            if (!Directories.Any())
-                throw new ArgumentNullException(FolderName);
+            return this;
+        }
 
-            _directories = Directories;
+        public Builder WithFingerprints(string FolderName)
+        {
+            if (!Directory.Exists(FolderName))
+                Directory.CreateDirectory(FolderName);
+
+            _fingerPrints = Directory.GetDirectories(FolderName, "*", SearchOption.TopDirectoryOnly);
 
             return this;
         }
@@ -39,7 +48,7 @@ namespace FingerprintCombos
             return _option switch
             {
                 Option.ADD => new Fingerprint(),
-                Option.SEARCHER => new Searcher(_directories),
+                Option.SEARCHER => new Searcher(_directories, _fingerPrints),
                 _ => throw new Exception()
             };
         }
