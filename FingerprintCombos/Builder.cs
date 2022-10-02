@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using FingerprintCombos.Helpers;
 using FingerprintCombos.Options;
+using static System.Net.WebRequestMethods;
 using static FingerprintCombos.Program;
 
 namespace FingerprintCombos
@@ -26,9 +27,17 @@ namespace FingerprintCombos
         public Builder WithCombosFolder(string FolderName)
         {
             if (!Directory.Exists(FolderName))
-                throw new DirectoryNotFoundException(FolderName);
+                Directory.CreateDirectory(FolderName);
 
-            _directories = FilesHelper.GetAllFilesOnDirectory(FolderName, "*.txt");
+            try
+            {
+                _directories = Directory.GetFiles(FolderName, "*.txt");
+            }
+            // Temporary solution to the exception in option 1
+            catch
+            {
+                _directories = default;
+            }
 
             return this;
         }
