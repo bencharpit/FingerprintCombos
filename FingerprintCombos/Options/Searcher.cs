@@ -58,7 +58,7 @@ namespace FingerprintCombos.Options
 
                 var comboReport = await FingerprintSearchInTextFile(comboLines);
 
-                await HandleComboReportAsync(comboReport, Path.GetFileName(comboName));
+                HandleComboReportAsync(comboReport, Path.GetFileName(comboName));
 
                 logService.WriteLog($"{comboName} report it's done @ {comboReport.EqualLinesFound.Count:N0} traces found");
             });
@@ -72,7 +72,7 @@ namespace FingerprintCombos.Options
         /// <param name="comboReport"><see cref="ComboReport"/></param>
         /// <param name="comboName">Combo name</param>
         /// <returns><see cref="Task"/></returns>
-        protected async Task HandleComboReportAsync(ComboReport comboReport, string comboName)
+        protected void HandleComboReportAsync(ComboReport comboReport, string comboName)
         {
             if (!Directory.Exists("Reports"))
                 Directory.CreateDirectory("Reports");
@@ -93,8 +93,6 @@ namespace FingerprintCombos.Options
             {
                 File.AppendAllText(ComboReportPath, reportText.ToString());
             }
-
-            await Task.CompletedTask;
         }
 
         /// <summary>

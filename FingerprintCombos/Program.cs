@@ -19,7 +19,7 @@ namespace FingerprintCombos
 
         static async Task Main()
         {
-            Console.Title = "FingerprintCombos @ https://cracked.to/char";
+            Console.Title = "FingerprintCombos @ https://cracked.to/char - https://github.com/bencharpit";
 
             var OptionChoosed = ConsoleHelper.GetIndexedOption(new Dictionary<string, Option?>
             {
