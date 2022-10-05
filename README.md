@@ -1,7 +1,7 @@
 # FingerprintCombos
 [Latest Release](https://github.com/bencharpit/FingerprintCombos/releases/tag/Release)
 
-#### Protect your combo cloud by adding a fingerprint to your combos!
+#### Protect your combo cloud by adding a fingerprint to your combos
 
 ## Features:
 - Find your combos lines in fully modified/randomized combos, protect them from being leaked
