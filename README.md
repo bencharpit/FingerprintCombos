@@ -10,7 +10,7 @@
 
 ## Instructions:
 1. Download .NET core runtime in case you don't have it already downloaded
-    - Direct links: [Windows with 64 Bits](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-3.1.29-windows-x64-installer) | [Windows with 32 Bits](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-3.1.29-windows-x86-installer) - [macOS](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-3.1.29-macos-x64-installer)
+    - Direct links: [Windows with 64 Bits](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-3.1.29-windows-x64-installer) | [Windows with 32 Bits](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-3.1.29-windows-x86-installer) | [macOS](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-3.1.29-macos-x64-installer)
 2. Download [Latest release](https://github.com/bencharpit/FingerprintCombos/releases/tag/Release)
 3. Open the .EXE in case you are on Windows, in case you are on macOS/Linux, go to the directory and type in the console: `dotnet run FingerprintCombos.dll`
 4. Go to option 1 to start protecting your combos, they will be saved in /ProtectedCombos/ComboName.txt-date/ComboName-Protected.txt
